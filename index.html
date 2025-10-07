@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdMath&Roll — Музыкальная математика для школьников</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #FAF8F5;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6B8E6F 0%, #8BA888 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background: white;
+            color: #6B8E6F;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #E8DDD3 0%, #F5EFE7 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #6B8E6F;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Problem Section */
+        .problem {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .problem-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .problem h2 {
+            color: #6B8E6F;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        /* Promise Section */
+        .promise {
+            background: linear-gradient(135deg, #6B8E6F 0%, #8BA888 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .promise-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .promise h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .motivation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .motivation-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .motivation-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Audio Section */
+        .audio-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .audio-section h2 {
+            color: #6B8E6F;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .audio-player {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-top: 2rem;
+        }
+
+        .audio-placeholder {
+            background: #E8DDD3;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .features h2 {
+            color: #6B8E6F;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #6B8E6F;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Author Section */
+        .author {
+            background: #E8DDD3;
+            padding: 4rem 2rem;
+        }
+
+        .author-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .author h2 {
+            color: #6B8E6F;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .author p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .author-quote {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #6B8E6F;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .pricing h2 {
+            color: #6B8E6F;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .pilot-banner {
+            background: linear-gradient(135deg, #FFD89B 0%, #FFC371 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pilot-banner h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #6B8E6F;
+            transform: scale(1.05);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: #6B8E6F;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #6B8E6F 0%, #8BA888 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-large {
+            background: white;
+            color: #6B8E6F;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .cta-large:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">🎵 EdMath&Roll</div>
+            <a href="https://t.me/Jedimath7" class="cta-button" target="_blank">Написать в Telegram</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="emoji">🎵📐✨</div>
+            <h1>Музыкальная математика для вашего ребёнка</h1>
+            <p class="subtitle">Закрытый клуб, где математика становится интересной через песни, систему и поддержку</p>
+            <a href="https://t.me/Jedimath7" class="cta-button" target="_blank">Записаться на пилот со скидкой 50%</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="problem-box">
+            <h2>😤 Родителям: знакомо?</h2>
+            <p>Ваш сын или дочь — не математик, не технарь. Учит китайский, занимается танцами, футболом, гимнастикой, живописью, экономикой.</p>
+            <p>А по математике — трояки или хлипкие, еле стоящие на ногах четверки.</p>
+            <p><strong>Что же, нанимать еще одного репетитора?</strong> Куда его вставлять: в 7:15 утра или в 20:15 вечера? Ничего, поужинает побыстрее? Может быть, не надо?</p>
+            <p>Может быть он у вас даже есть, но решило ли эту проблему или <strong>"репет"</strong> просто помогает делать домашку?</p>
+        </div>
+    </section>
+
+    <!-- Promise Section -->
+    <section class="promise">
+        <div class="promise-content">
+            <h2>💭 Чего не обещаю, а чего будем добиваться</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Мой клуб НЕ обещает 90+ баллов на ЕГЭ или что за месяц мы разберем все темы и победим в городской олимпиаде.</p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Но будет кое-что другое. <strong>Энергия интереса и внутренней мотивации.</strong> Нам всем сейчас не хватает не времени, а энергии.</p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">Вы знаете, что бывает мотивация внешняя и внутренняя.</p>
+            
+            <div class="motivation-grid">
+                <div class="motivation-card">
+                    <h3>Внешняя мотивация:</h3>
+                    <p>"Будешь хорошо учиться — поедем туда, купим то, получишь денег столько-то". Она работает, но на короткой дистанции. И хуже того — полностью выжигает мотивацию внутреннюю. <strong>Если мне платят за то, что я учу математику, значит это и вправду гадость, которую нужно подсластить.</strong></p>
+                </div>
+                <div class="motivation-card">
+                    <h3>Внутренняя мотивация работает по-другому:</h3>
+                    <p>• Питается интересом внутри процесса и тем, что "получилось решить"</p>
+                    <p>• Растет через преодоление и рост над самим собой</p>
+                    <p>• Делает человека самостоятельным, самодвижным и компетентным</p>
+                    <p>• Помогает учиться учиться и учить других</p>
+                    <p>• Сам ищет ответ на вопрос "Как это пригодится в жизни"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Demo Section -->
+    <section class="audio-section">
+        <h2>🎵 Послушайте пример</h2>
+        <div class="audio-player">
+            <div class="audio-placeholder">
+                <p style="color: #666; font-size: 1.1rem;">🎧 Здесь будет ваш аудиоплеер</p>
+                <p style="color: #999; margin-top: 1rem;">Вставьте ссылку на демо-песню после создания</p>
+            </div>
+            <!-- Вставьте сюда свой audio элемент:
+            <audio controls style="width: 100%;">
+                <source src="ВАШ_ФАЙЛ.mp3" type="audio/mpeg">
+            </audio>
+            -->
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>📱 Что внутри клуба</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-style: italic; color: #666;">Закрытый канал в Telegram</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3>МУЗЫКА</h3>
+                <p><strong>Песни</strong> на основные математические темы (в основном 7-11 класс).</p>
+                <p>Они классно звучат, их приятно слушать, не стыдно громко ставить в машине и можно вместе петь, легко запоминать.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>ЧТО ЭТО, КАК ДЕЛАТЬ, ПРАКТИКА</h3>
+                <p>Материалы с легкой навигацией по основным темам математики. За 3-4 клика человек найдет:</p>
+                <p>• <strong>Напоминание</strong> — что это за тема, о чем, с чем связана</p>
+                <p>• <strong>Алгоритм</strong> — какие шаги предпринять, чтобы решить</p>
+                <p>• <strong>Тренажеры</strong> — проверить в деле, насколько понял и прокачать навык</p>
+                <p>• <strong>Интересные факты</strong> — а это еще в 15 веке ребята в Италии собрались и провели чемпионат по решению квадратных уравнений. Виет там был. будут добавляться постепенно</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3>ИНТЕРЕСНЫЕ ФАКТЫ</h3>
+                <p>Об истории, науке, искусстве, образовании — направляющие в созидательное русло и расширяющие кругозор.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>РАЗВИТИЕ МЫШЛЕНИЯ</h3>
+                <p>Открытые задачи, данетки, логические задачи.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💪</div>
+                <h3>ПОДДЕРЖКА</h3>
+                <p>Лень вставать, мало сил, устал, расстроился из-за оценок, что-то не поделил в классе?</p>
+                <p>Краткие голосовые или текстовые сообщения поддержки, вдохновляющие цитаты, смешные (но не злые!) картинки, мемы и анекдоты.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>СООБЩЕСТВО</h3>
+                <p>Возможность обменяться опытом, рассказать о себе, узнать о других, встретить похожих или новых людей своего возраста и интересов.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>ЭКОНОМИЯ ВРЕМЕНИ</h3>
+                <p>• <strong>Музыку про математику</strong> можно слушать по дороге в школу и обратно</p>
+                <p>• <strong>Цитаты и голосовые</strong> — в любой удобной ситуации</p>
+                <p>• <strong>Доступ к базе</strong> есть всегда, когда нужно</p>
+                <p>• Можно самому серфить, можно находить тему под конкретную задачу.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3>ВСТРЕЧИ В ZOOM РАЗ В ДВЕ НЕДЕЛИ</h3>
+                <p style="font-style: italic; color: #666; margin-bottom: 1rem;">На продвинутом и VIP тарифах</p>
+                <p>• Общение и ответы на вопросы</p>
+                <p>• Обучение базовым навыкам для любого предмета:</p>
+                <p style="padding-left: 1rem;">- Продвинутая работа в Word и PowerPoint</p>
+                <p style="padding-left: 1rem;">- Понимание, как работать с ИИ и почему надо быть аккуратным</p>
+                <p style="padding-left: 1rem;">- Как строить свою систему знаний</p>
+                <p style="padding-left: 1rem;">- Как правильно и осмысленно учить наизусть</p>
+                <p style="padding-left: 1rem;">- Как работает память...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="author">
+        <div class="author-content">
+            <h2>👨‍🏫 Кто говорит?</h2>
+            <p><strong>Михаил Бахадов.</strong></p>
+            <p>Мне 36 лет, преподаю уже 16 лет. Учился в Бауманке на двух факультетах, работал на кафедре Высшей математики.</p>
+            <div class="author-quote">
+                "Знаете, какая самая большая радость у преподавателя? Вот это самое: <strong>'АААА, я понял...'</strong>, которое говорят твои ученики, когда они поняли и смогли. Это как разрядка напряжения в общении, как воздух после грозы. Хочу, чтобы этих 'АААА' было больше, потому и запускаю клуб."
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <h2>🧪 ПИЛОТНЫЙ НАБОР — СКИДКА 50%</h2>
+        <div class="pilot-banner">
+            <p style="font-size: 1.1rem;">Сейчас собираю <strong>первых 20 человек</strong> для отладки всех процессов и сбора обратной связи.</p>
+            <p style="font-size: 1rem; margin-top: 1rem;"><strong>График:</strong></p>
+            <p>• <strong>Октябрь</strong> — тестируем, получаем обратную связь, собираем заявки</p>
+            <p>• <strong>Ноябрь</strong> — большой запуск</p>
+            <p style="margin-top: 1rem;">Ребята смогут влиять на то, какие материалы появятся в клубе в первую очередь. <strong>Активные участники пилота получат постоянные скидки на все тарифы.</strong></p>
+        </div>
+        
+        <h3 style="text-align: center; color: #6B8E6F; font-size: 1.8rem; margin: 2rem 0;">💰 ТАРИФЫ:</h3>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Базовый</h3>
+                <div class="price">2000₽</div>
+                <ul style="text-align: left; margin-top: 1rem; line-height: 1.8;">
+                    <li>✅ Доступ ко всем песням и базе знаний</li>
+                    <li>✅ Тренажёры и практические задания</li>
+                    <li>✅ Мотивационная поддержка</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Продвинутый</h3>
+                <div class="old-price">4000₽</div>
+                <div class="price">2000₽</div>
+                <p style="background: #FFD89B; padding: 0.5rem; border-radius: 5px; margin: 1rem 0;"><strong>В октябре первых 20 человек, подключу на продвинутый тариф со скидкой 50%</strong></p>
+                <ul style="text-align: left; margin-top: 1rem; line-height: 1.8;">
+                    <li>✅ К базовому тарифу 2 вебинара в месяц с ответами на вопросы</li>
+                    <li>✅ Возможность предлагать какие темы готовить в первую очередь</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>VIP</h3>
+                <div class="price">10000₽</div>
+                <p style="color: #999; margin: 1rem 0;">откроется в ноябре</p>
+                <ul style="text-align: left; margin-top: 1rem; line-height: 1.8;">
+                    <li>(детали будут позже)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px;">
+            <h3 style="color: #6B8E6F; font-size: 1.5rem; margin-bottom: 1rem;">⏰ ДЕДЛАЙН:</h3>
+            <p style="font-size: 1.2rem;"><strong>Записаться можно в течения октября</strong></p>
+            <p style="font-size: 1.2rem; margin-top: 0.5rem;"><strong>1 ноября — запускаем клуб</strong></p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>📝 КАК ПОПАСТЬ В КЛУБ</h2>
+        <div style="max-width: 800px; margin: 2rem auto;">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">1. <strong>Напишите мне в Telegram</strong> →</p>
+            <a href="https://t.me/Jedimath7" class="cta-large" target="_blank" style="margin-bottom: 2rem; display: inline-block;">Написать в Telegram</a>
+            <p style="font-size: 1.2rem; margin: 2rem 0 1rem 0;">2. <strong>Расскажите:</strong> имя школьника, класс, главные сложности с математикой</p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">3. <strong>Получите:</strong> доступ в закрытый канал с 1 октября и много радости.</p>
+            <p style="margin-top: 2rem;">А пока можете почитать мой открытый канал <a href="https://t.me/math4people" style="color: #FFD89B; text-decoration: underline;" target="_blank">"Математика для людей"</a></p>
+            <p style="margin-top: 2rem; font-size: 1.1rem; background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px;"><strong>Бонус:</strong> Кто мне напишет в телеграм получит песни и сможет выучить квадраты двузначных чисел раньше всех.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>🎵 EdMath&Roll — Музыкальная математика</p>
+        <p style="margin-top: 0.5rem;">Открытый канал: <a href="https://t.me/math4people" style="color: #8BA888;" target="_blank">Математика для людей</a></p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">© 2024 Михаил Бахадов</p>
+    </footer>
+</body>
+</html>
