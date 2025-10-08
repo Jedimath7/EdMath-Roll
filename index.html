@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EdMath&Roll — выбор раздела</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin:0; background: linear-gradient(135deg,#FAF8F5 0%,#E8DDD3 100%); color:#222; }
+    .wrap { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2rem; text-align:center; }
+    h1 { color:#6B8E6F; font-size:2.2rem; margin-bottom:0.5rem; }
+    p.lead { color:#555; margin-bottom:1.8rem; }
+    .buttons { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
+    .btn { background:#6B8E6F; color:#fff; padding:14px 28px; border-radius:36px; text-decoration:none; font-weight:700; font-size:1.05rem; box-shadow:0 6px 18px rgba(0,0,0,0.08); transition:transform .18s ease; }
+    .btn:hover{ transform:translateY(-4px); }
+    footer { margin-top:2.2rem; color:#666; font-size:0.95rem; }
+    @media(max-width:520px){ h1{font-size:1.6rem} .btn{width:100%; max-width:320px} .buttons{flex-direction:column} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🎵 EdMath&Roll</h1>
+    <p class="lead">Коротко и по делу — выберите свой раздел</p>
+    <div class="buttons">
+      <a class="btn" href="parents.html">Для родителей</a>
+      <a class="btn" href="students.html">Для школьников</a>
+    </div>
+    <footer>© 2024 Михаил Бахадов</footer>
+  </div>
+</body>
+</html>
